@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="String" />
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/root_item_cities_add_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e1e1e1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_group"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:lineSpacingExtra="3.7sp"
+            android:text="@{model}"
+            android:textColor="#4c5264"
+            android:textSize="4.7pt"
+            android:textStyle="bold"
+            tools:text="A" />
+    </LinearLayout>
+</layout>

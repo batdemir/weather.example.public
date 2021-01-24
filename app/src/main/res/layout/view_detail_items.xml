@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_view_icon"
+            android:layout_width="16sp"
+            android:layout_height="16sp"
+            android:layout_margin="@dimen/margin"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_sub_title"
+            app:layout_constraintEnd_toStartOf="@id/text_view_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_view_title"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_sunny_small" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_title"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="10.7sp"
+            android:textColor="#4c5264"
+            android:textSize="4pt"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/text_view_sub_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_view_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Nem" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_sub_title"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="10.7sp"
+            android:textColor="#4c5264"
+            android:textSize="4pt"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/text_view_title"
+            app:layout_constraintStart_toStartOf="@id/text_view_title"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title"
+            tools:text="%64" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</merge>

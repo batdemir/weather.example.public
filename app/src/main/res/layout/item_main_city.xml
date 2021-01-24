@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.batdemir.template.data.entities.ui.MainItemModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/root_item_main_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@{model.selected ? @color/purple : @color/window_background_color }"
+        app:cardCornerRadius="@dimen/card_corner_radius_large"
+        app:cardUseCompatPadding="true">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:lineSpacingExtra="9.7sp"
+            android:text="@{model.name}"
+            android:textColor="@{model.selected ? @color/selected_city_text_color : @color/unselected_city_text_color}"
+            android:textSize="5pt"
+            android:textStyle="normal"
+            tools:text="İstanbul" />
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cities_navigation"
+    app:startDestination="@id/citiesFragment">
+
+    <fragment
+        android:id="@+id/citiesFragment"
+        android:name="com.batdemir.template.ui.view.cities.CitiesFragment"
+        android:label="@string/title_cities"
+        tools:layout="@layout/fragment_cities">
+        <action
+            android:id="@+id/action_citiesFragment_to_citiesAddFragment"
+            app:destination="@id/citiesAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/citiesAddFragment"
+        android:name="com.batdemir.template.ui.view.cities.add.CitiesAddFragment"
+        android:label="@string/title_cities_add"
+        tools:layout="@layout/fragment_cities_add" />
+</navigation>

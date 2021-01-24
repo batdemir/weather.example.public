@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="adapterCities"
+            type="com.batdemir.template.ui.adapter.MainCityAdapter" />
+
+        <variable
+            name="adapterHours"
+            type="com.batdemir.template.ui.adapter.MainHoursAdapter" />
+
+        <variable
+            name="adapterWeekly"
+            type="com.batdemir.template.ui.adapter.MainWeeklyAdapter" />
+
+        <variable
+            name="model"
+            type="com.batdemir.template.data.entities.ui.MainItemModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root_fragment_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/root_padding"
+        tools:context=".ui.view.home.HomeFragment">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_cities"
+            android:layout_width="match_parent"
+            android:layout_height="42sp"
+            android:orientation="horizontal"
+            app:fastScrollEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reverseLayout="false"
+            app:setAdapter="@{adapterCities}"
+            app:spanCount="1"
+            tools:listitem="@layout/item_main_city" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_current"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/padding_large">
+
+            <LinearLayout
+                android:id="@+id/linear_layout_current"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/image_view_weather_icon"
+                    android:layout_width="72sp"
+                    android:layout_height="72sp"
+                    android:layout_margin="@dimen/margin"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_sunny_large" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_current_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_current_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="22.3sp"
+                        android:textColor="#7503fd"
+                        android:textSize="13.3pt"
+                        android:textStyle="normal"
+                        tools:text="35°C" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_current_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="10sp"
+                        android:textColor="#4c5264"
+                        android:textSize="4.7pt"
+                        android:textStyle="normal"
+                        tools:text="Açık, güneşli" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_current_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="10sp"
+                        android:textColor="#7503fd"
+                        android:textSize="4.7pt"
+                        android:textStyle="normal"
+                        tools:text="7/27/2020" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1sp"
+                    android:layout_height="match_parent"
+                    android:background="#eeeeee" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_current_container_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_current_temp_max"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/padding_small"
+                        android:lineSpacingExtra="9.3sp"
+                        android:textColor="#4c5264"
+                        android:textSize="5.3pt"
+                        android:textStyle="normal"
+                        app:drawableStartCompat="@drawable/ic_arrow_up_small"
+                        tools:text="38°" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/text_view_current_temp_min"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/padding_small"
+                        android:lineSpacingExtra="9.3sp"
+                        android:textColor="#4c5264"
+                        android:textSize="5.3pt"
+                        android:textStyle="normal"
+                        app:drawableStartCompat="@drawable/ic_arrow_down_small"
+                        tools:text="38°" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/view_pager_hours"
+            android:layout_width="match_parent"
+            android:layout_height="72sp"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginBottom="@dimen/margin"
+            android:orientation="horizontal"
+            app:fastScrollEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reverseLayout="false"
+            app:setAdapter="@{adapterHours}"
+            app:spanCount="1"
+            tools:listitem="@layout/item_main_hours" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_daily_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="9.3sp"
+            android:text="@string/daily_detail"
+            android:textColor="#4c5264"
+            android:textSize="5.3pt"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_current_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/padding_large">
+
+            <TableLayout
+                android:id="@+id/table_layout_current_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="*">
+
+                <TableRow>
+
+                    <com.batdemir.template.ui.components.CustomViewDetailItem
+                        android:id="@+id/detail_item_wind"
+                        app:icon="@drawable/ic_windy_small"
+                        app:title="@string/wind"
+                        tools:sub_title="16 mhs/s" />
+
+                    <com.batdemir.template.ui.components.CustomViewDetailItem
+                        android:id="@+id/detail_item_visibility"
+                        app:icon="@drawable/ic_visuality_small"
+                        app:title="@string/visibility"
+                        tools:sub_title="32 km" />
+                </TableRow>
+
+                <TableRow>
+
+                    <com.batdemir.template.ui.components.CustomViewDetailItem
+                        android:id="@+id/detail_item_moisture"
+                        app:icon="@drawable/ic_moisture_small"
+                        app:title="@string/moisture"
+                        tools:sub_title="%64" />
+
+                    <com.batdemir.template.ui.components.CustomViewDetailItem
+                        android:id="@+id/detail_item_uv"
+                        app:icon="@drawable/ic_uv_small"
+                        app:title="@string/uv"
+                        tools:sub_title="1.2" />
+                </TableRow>
+            </TableLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_weekly_weather_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="9.3sp"
+            android:text="Haftalık Hava Durumu"
+            android:textColor="#4c5264"
+            android:textSize="5.3pt"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/padding_large">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:fastScrollEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:reverseLayout="false"
+                app:setAdapter="@{adapterWeekly}"
+                app:spanCount="1"
+                tools:listitem="@layout/item_main_weather_weekly" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

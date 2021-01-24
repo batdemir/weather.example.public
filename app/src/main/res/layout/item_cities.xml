@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.format.DateUtils" />
+
+        <variable
+            name="isEditModeOn"
+            type="boolean" />
+
+        <variable
+            name="model"
+            type="com.batdemir.template.data.entities.ui.CitiesItemModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/root_item_cities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/padding_large">
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view_delete"
+                android:layout_width="16sp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                android:visibility="@{isEditModeOn ? View.VISIBLE : View.GONE }"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view_weather_icon"
+                android:layout_width="match_parent"
+                android:layout_height="32sp"
+                android:layout_weight="1"
+                app:setImage="@{model.weather.icon}"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/ic_sunny_small" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_view_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="10sp"
+                    android:text="@{model.city.name}"
+                    android:textColor="#4c5264"
+                    android:textSize="4.7pt"
+                    android:textStyle="bold"
+                    tools:text="Antalya" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_view_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="10sp"
+                    android:text="@{model.getDateStr()}"
+                    android:textColor="@color/purple"
+                    android:textSize="4.7pt"
+                    android:textStyle="bold"
+                    tools:text="7/27/2020" />
+            </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_view_temp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="25.7sp"
+                android:text="@{model.temp}"
+                android:textColor="#7503fd"
+                android:textSize="10pt"
+                android:textStyle="normal"
+                tools:text="38°C" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view_swipe"
+                android:layout_width="16sp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_swipe"
+                android:visibility="@{isEditModeOn ? View.VISIBLE : View.GONE }"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

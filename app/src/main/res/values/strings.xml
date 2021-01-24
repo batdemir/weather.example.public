@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">weatherapp</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_cities">Cities</string>
+    <string name="title_cities_add">Cities Add</string>
+    <string name="title_search">Search</string>
+    <string name="title_add">Add</string>
+    <string name="title_edit">Edit</string>
+    <string name="daily_detail">Daily Detail</string>
+    <string name="wind">Wind</string>
+    <string name="visibility">Visibility</string>
+    <string name="moisture">Moisture</string>
+    <string name="uv">UV</string>
+</resources>
